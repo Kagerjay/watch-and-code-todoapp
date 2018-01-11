@@ -1,7 +1,27 @@
 <script>
   var todos =['item 1', 'item 2', 'item 3']; // Store
-  todos.push('new to do'); // Create
-  todos[3] = 'changed'; // Update
-  todos.splice(0,1); // Delete
-  console.log(todos); // Display
+
+  // It should have a function to display todos
+  function displayTodos() {
+    console.log(todos); // Display
+  }
+
+  // it should have a function to add todos
+  function addTodo(todo) {
+    todos.push(todo);
+    displayTodos();
+  }
+
+  // it should have a function to change todos
+  function changeTodo(position, newValue) {
+    todos[position] = newValue;
+    displayTodos();
+  }
+
+  // it should have a function to delete todos
+  function deleteTodo(position) {
+    todos.splice(position,1);
+    displayTodos();
+  }
+
 </script>
