@@ -75,6 +75,7 @@ var handlers = {
     var addTodoInput = document.getElementById("addTodoInput");
     todoList.addTodo(addTodoInput.value);
     addTodoInput.value = '';
+    view.displayTodo();
   },
   changeTodo: function() {
     var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
@@ -82,18 +83,45 @@ var handlers = {
     todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoInput.value);
     changeTodoPositionInput.value='';
     changeTodoInput.value ='';
+    view.displayTodo();
   },
   deleteTodo: function() {
     var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
     todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
     deleteTodoPositionInput.value ='';
+    view.displayTodo();
   },
   toggleCompleted: function() {
     var toggleCompletedPositionInput = document.getElementById("toggleCompletedPositionInput");
     todoList.toggleCompleted(toggleCompletedPositionInput.value);
     toggleCompletedPositionInput.value='';
+    view.displayTodo();
   },
   toggleAll: function() {
     todoList.toggleAll();
+    view.displayTodo();
   },
+}
+
+var view = {
+  displayTodo: function(){
+    // Once called, output the bulletpoints of todos done
+    // Define initial values
+    var todoUl = document.querySelector('ul');
+    todoUl.innerHTML = '';
+    // Loop each todolist.todo array and output its results
+    for (var i = 0; i < todoList.todos.length; i++) {
+      var todoLi = document.createElement('li');
+      var todoTextWithCompletion = '';
+      var todo = todoList.todos[i];
+
+      if (todo.completed === true){
+        todoTextWithCompletion = '(x)' + todo.todoText;
+      } else {
+        todoTextWithCompletion = '( )' + todo.todoText;
+      }
+      todoLi.textContent = todoTextWithCompletion;
+      todoUl.appendChild(todoLi);
+    }
+  }
 }
