@@ -1,27 +1,13 @@
-<script>
-  var todos =['item 1', 'item 2', 'item 3']; // Store
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-  // It should have a function to display todos
-  function displayTodos() {
-    console.log(todos); // Display
-  }
-
-  // it should have a function to add todos
-  function addTodo(todo) {
-    todos.push(todo);
-    displayTodos();
-  }
-
-  // it should have a function to change todos
-  function changeTodo(position, newValue) {
-    todos[position] = newValue;
-    displayTodos();
-  }
-
-  // it should have a function to delete todos
-  function deleteTodo(position) {
-    todos.splice(position,1);
-    displayTodos();
-  }
-
-</script>
+  <body>
+    <h1>Todo List</h1>
+    <button id="displayTodoButton">Display Todos</button>
+    <button id="toggleAllButton">Toggle All</button>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
